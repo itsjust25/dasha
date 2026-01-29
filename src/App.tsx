@@ -24,7 +24,8 @@ function App() {
         setPhase('passport');
     };
 
-    const handlePassportApprove = () => {
+    const handlePassportApprove = (photo: string) => {
+        setSelection(prev => ({ ...prev, passportImage: photo }));
         setPhase('selection');
     };
 

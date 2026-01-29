@@ -4,7 +4,7 @@ import { Camera, CheckCircle } from 'lucide-react';
 import './PassportVerification.css';
 
 interface PassportVerificationProps {
-    onApprove: () => void;
+    onApprove: (photo: string) => void;
 }
 
 export default function PassportVerification({ onApprove }: PassportVerificationProps) {
@@ -23,9 +23,10 @@ export default function PassportVerification({ onApprove }: PassportVerification
     };
 
     const handleApprove = () => {
+        if (!photo) return;
         setIsApproving(true);
         setTimeout(() => {
-            onApprove();
+            onApprove(photo);
         }, 1500);
     };
 

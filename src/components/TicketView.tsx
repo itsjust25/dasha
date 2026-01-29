@@ -1,6 +1,9 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Plane } from 'lucide-react';
+import { Plane, Download } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import { dateOptions } from '../data/dateOptions';
 import type { DateSelection } from '../types';
 import './TicketView.css';
@@ -11,13 +14,32 @@ interface TicketViewProps {
 }
 
 export default function TicketView({ selection, onSend }: TicketViewProps) {
-    const handleSend = () => {
+    const ticketRef = useRef<HTMLDivElement>(null);
+
+    const handleDownload = async () => {
         confetti({
             particleCount: 150,
             spread: 90,
             origin: { y: 0.6 },
             colors: ['#D4AF37', '#F0F8FF', '#0A192F'],
         });
+
+        if (ticketRef.current) {
+            const canvas = await html2canvas(ticketRef.current, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#0a192f', // Match background
+            });
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+                orientation: 'landscape',
+                unit: 'px',
+                format: [canvas.width / 2, canvas.height / 2]
+            });
+
+            pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2);
+            pdf.save('boarding-pass.pdf');
+        }
 
         onSend();
     };
@@ -30,7 +52,7 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
                 animate={{ scale: 1, opacity: 1, rotateX: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-                <div className="boarding-pass">
+                <div className="boarding-pass" ref={ticketRef}>
                     <div className="pass-header">
                         <div className="airline-logo">
                             <Plane className="plane-logo" size={24} />
@@ -41,9 +63,16 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
 
                     <div className="pass-body">
                         <div className="flight-info-row">
-                            <div className="info-block">
+                            <div className="info-block passenger-block">
                                 <label>PASSENGER</label>
-                                <div className="value script">Shekeinah</div>
+                                <div className="passenger-details">
+                                    {selection.passportImage && (
+                                        <div className="mini-passport-photo">
+                                            <img src={selection.passportImage} alt="Passport" />
+                                        </div>
+                                    )}
+                                    <div className="value script">Shekeinah</div>
+                                </div>
                             </div>
                             <div className="info-block">
                                 <label>FLIGHT</label>
@@ -113,7 +142,10 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
                                 <div key={i} className="bar" style={{ height: Math.random() > 0.5 ? '100%' : '70%', width: Math.random() * 3 + 1 }} />
                             ))}
                         </div>
-                        <button className="confirm-btn" onClick={handleSend}>CONFIRM BOARDING</button>
+                        <button className="confirm-btn download-btn" onClick={handleDownload}>
+                            <Download size={18} />
+                            DOWNLOAD BOARDING PASS
+                        </button>
                     </div>
                 </div>
             </motion.div>

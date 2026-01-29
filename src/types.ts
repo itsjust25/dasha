@@ -17,4 +17,5 @@ export interface DateSelection {
     bringOwnFood?: boolean;
     comments: string;
     customImage?: string;
+    passportImage?: string;
 }

@@ -80,13 +80,13 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
                             </div>
                             <div className="info-block">
                                 <label>DATE</label>
-                                <div className="value">14 FEB 2026</div>
+                                <div className="value">{selection.date ? new Date(selection.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase() : '14 FEB 2026'}</div>
                             </div>
                         </div>
 
                         <div className="destination-row">
                             <div className="route">
-                                <div className="city">TIN</div>
+                                <div className="city">TIN ❤️ DASHA</div>
                                 <div className="plane-path">✈</div>
                                 <div className="city">{selection.location.toUpperCase()}</div>
                             </div>

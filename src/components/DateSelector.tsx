@@ -11,6 +11,7 @@ interface DateSelectorProps {
         activities: string[];
         bringOwnFood?: boolean;
         customImage?: string;
+        date?: string;
     }) => void;
 }
 
@@ -30,6 +31,7 @@ export default function DateSelector({ onComplete }: DateSelectorProps) {
             activities: string[];
             bringOwnFood?: boolean;
             customImage?: string;
+            date?: string;
         }
     ) => {
         setSelections((prev) => ({

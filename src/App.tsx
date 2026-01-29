@@ -36,6 +36,7 @@ function App() {
         activities: string[];
         bringOwnFood?: boolean;
         customImage?: string;
+        date?: string;
     }) => {
         setSelection((prev) => ({
             ...prev,

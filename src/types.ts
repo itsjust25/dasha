@@ -18,4 +18,5 @@ export interface DateSelection {
     comments: string;
     customImage?: string;
     passportImage?: string;
+    date?: string;
 }

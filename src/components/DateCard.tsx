@@ -14,6 +14,7 @@ interface DateCardProps {
         activities: string[];
         bringOwnFood?: boolean;
         customImage?: string;
+        date?: string;
     }) => void;
 }
 
@@ -34,6 +35,7 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
             activities: selectedActivities.length > 0 ? selectedActivities : option.activities || [],
             bringOwnFood: option.hasOwnFood ? bringOwnFood : undefined,
             customImage: option.customInput ? customImage : undefined,
+            date: selectedDate || undefined,
         };
         onSelectionChange(selection);
     };
@@ -52,6 +54,7 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
                     activities: selectedActivities.length > 0 ? selectedActivities : option.activities || [],
                     bringOwnFood: option.hasOwnFood ? bringOwnFood : undefined,
                     customImage: result,
+                    date: selectedDate || undefined,
                 };
                 onSelectionChange(selection);
             };

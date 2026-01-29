@@ -49,8 +49,6 @@ function App() {
     };
 
     const handleSend = () => {
-        console.log('Date Selection:', selection);
-        alert('Your choices have been saved! 💕\n\nIn the future, this will send an email.');
         setPhase('sent');
     };
 

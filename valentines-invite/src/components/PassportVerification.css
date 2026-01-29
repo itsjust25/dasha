@@ -1,0 +1,343 @@
+.passport-verification {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.passport-verification::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(46, 26, 71, 0.7) 0%,
+            rgba(74, 43, 112, 0.4) 100%);
+    z-index: 0;
+}
+
+.passport-verification::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.passport-book {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background: linear-gradient(135deg, #8B0000 0%, #5D0000 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 2px var(--color-gold);
+}
+
+.passport-cover {
+    background: linear-gradient(135deg, #8B0000 0%, #5D0000 100%);
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-gold);
+    border-right: 3px solid var(--color-gold);
+}
+
+.passport-emblem {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.passport-cover h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.passport-cover h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.passport-country {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.passport-inner {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+    padding: 40px;
+    position: relative;
+}
+
+.passport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-navy);
+}
+
+.passport-type {
+    font-size: 0.7rem;
+    color: var(--color-navy);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.passport-code {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    font-family: 'Courier New', monospace;
+}
+
+.passport-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.passport-photo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border: 3px solid var(--color-navy);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.uploaded-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-muted);
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: var(--color-navy-light);
+    transform: translateY(-2px);
+}
+
+.passport-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-field label {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    padding: 8px 0;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.passport-number {
+    color: #dc3545;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.visa-stamp {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translate(0, -50%) rotate(-15deg);
+    z-index: 10;
+}
+
+.stamp-circle {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #28a745;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    gap: 5px;
+}
+
+.stamp-date {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.approve-visa-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.approve-visa-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.approve-visa-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.button-group-passport {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.photo-required-msg {
+    color: #dc3545;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .passport-book {
+        grid-template-columns: 1fr;
+    }
+
+    .passport-cover {
+        padding: 40px 20px;
+        border-right: none;
+        border-bottom: 3px solid var(--color-gold);
+    }
+
+    .passport-emblem {
+        font-size: 3rem;
+    }
+
+    .passport-cover h1 {
+        font-size: 1.3rem;
+    }
+
+    .passport-cover h2 {
+        font-size: 1.8rem;
+    }
+
+    .passport-inner {
+        padding: 30px 20px;
+    }
+
+    .passport-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .photo-frame {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .visa-stamp {
+        right: 20px;
+        transform: translate(0, -50%) rotate(-15deg) scale(0.8);
+    }
+}

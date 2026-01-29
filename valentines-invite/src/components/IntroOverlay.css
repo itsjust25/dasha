@@ -1,0 +1,298 @@
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/assets/cockpit_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2000;
+}
+
+.intro-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(46, 26, 71, 0.3);
+    /* Purple overlay for better card visibility */
+    z-index: 1;
+}
+
+/* Modern Boarding Card */
+.boarding-card {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.card-header {
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--color-gold);
+}
+
+.airline-branding {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.airline-icon {
+    color: var(--color-gold);
+}
+
+.airline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.airline-name {
+    font-family: var(--font-logo);
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
+.airline-tagline {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.heart-icon {
+    color: var(--color-gold);
+}
+
+/* Card Body */
+.card-body {
+    padding: 32px 24px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Invitation Preview */
+.invitation-preview {
+    text-align: center;
+}
+
+.invitation-title {
+    font-size: 2rem;
+    color: var(--color-navy);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.invitation-subtitle {
+    font-size: 1rem;
+    color: var(--color-navy-light);
+    margin-bottom: 24px;
+}
+
+.flight-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    padding: 16px 32px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.badge-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.badge-value {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.reveal-btn {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    padding: 16px 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.reveal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Invitation Details */
+.invitation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.passenger-info {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #ddd;
+}
+
+.passenger-info label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.passenger-name {
+    font-family: var(--font-logo);
+    font-size: 2rem;
+    color: var(--color-navy);
+}
+
+.flight-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-item label {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+}
+
+.info-item span {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+.boarding-message {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.boarding-message p {
+    color: var(--color-navy);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.message-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-navy-light);
+    margin-top: 4px;
+}
+
+.board-btn {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    padding: 16px 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.board-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Footer */
+.card-footer {
+    background: #f5f5f5;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed #ddd;
+}
+
+.barcode {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+}
+
+.bar {
+    background: #333;
+}
+
+.booking-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .boarding-card {
+        width: 95%;
+        max-width: none;
+    }
+
+    .card-header {
+        padding: 20px;
+    }
+
+    .airline-name {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 24px 20px;
+        min-height: 280px;
+    }
+
+    .invitation-title {
+        font-size: 1.5rem;
+    }
+
+    .flight-info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}

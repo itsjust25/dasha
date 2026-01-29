@@ -1,0 +1,229 @@
+.date-card {
+    background: var(--color-navy-light);
+    border-left: 4px solid var(--color-gold);
+    transition: all 0.3s var(--transition-smooth);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.date-card:hover {
+    background: #5D3D87;
+    transform: translateX(10px);
+}
+
+.date-card.expanded {
+    background: #5D3D87;
+    border-left: 4px solid var(--color-gold);
+    /* Active state */
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    cursor: default;
+    transform: none;
+}
+
+/* flight-row-layout (collapsed state) */
+.card-image-container {
+    display: flex;
+    align-items: center;
+    height: auto;
+    min-height: 80px;
+    padding: 0 20px;
+}
+
+.card-image {
+    /* Hidden in flight row mode, shown in details */
+    display: none;
+}
+
+/* Creating the "Departure Row" look */
+.card-overlay {
+    position: relative;
+    background: transparent;
+    padding: 20px 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80px 1fr 100px 50px;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.flight-code {
+    font-family: 'Courier New', monospace;
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-overlay h3 {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status {
+    color: #4CAF50;
+    /* Green for "On Time" */
+    font-family: monospace;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.expand-icon {
+    color: var(--color-gold);
+    display: flex;
+    justify-content: center;
+}
+
+/* Expanded View Details */
+.card-details {
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Re-adding the image in the expanded view */
+.details-content-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.expanded-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Form Styles Override for Dark Mode */
+.form-group label {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+}
+
+.chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chip.active {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    border-color: var(--color-gold);
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed var(--color-gold);
+    color: var(--color-gold);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.custom-image-preview {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.custom-image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .card-overlay {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .details-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expanded-image {
+        height: 200px;
+    }
+}

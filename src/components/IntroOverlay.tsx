@@ -65,7 +65,7 @@ export default function IntroOverlay({ onAccept }: IntroOverlayProps) {
                         >
                             <div className="passenger-info">
                                 <label>PASSENGER</label>
-                                <span className="passenger-name">My Valentine</span>
+                                <span className="passenger-name">Shekeinah</span>
                             </div>
 
                             <div className="flight-info-grid">
@@ -79,7 +79,7 @@ export default function IntroOverlay({ onAccept }: IntroOverlayProps) {
                                 </div>
                                 <div className="info-item">
                                     <label>FROM</label>
-                                    <span>HEART</span>
+                                    <span>TIN</span>
                                 </div>
                                 <div className="info-item">
                                     <label>CLASS</label>

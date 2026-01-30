@@ -5,7 +5,7 @@ export const dateOptions: DateOption[] = [
         id: 'picnic',
         title: 'Picnic Date',
         image: '/assets/picnic_date.png',
-        locations: ['Quezon City Circle', 'UP Town', 'Valenzuela Park', 'Philippine Arena'],
+        locations: ['Quezon City Circle', 'Valenzuela Park', 'Philippine Arena'],
         hasOwnFood: true,
     },
     {
@@ -41,7 +41,7 @@ export const dateOptions: DateOption[] = [
         id: 'foodtrip',
         title: 'Samgyupsal / Unli Wings',
         image: '/assets/food_trip.png',
-        locations: ['Maginhawa', 'Tomas Morato', 'Kapitolyo'],
+        locations: ['Venue Subject to Choice'],
         foodOptions: ['Samgyupsal', 'Unli Wings'],
     },
     {

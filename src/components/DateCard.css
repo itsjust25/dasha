@@ -227,3 +227,30 @@
         height: 200px;
     }
 }
+
+.static-location-value {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 12px;
+    border-radius: 6px;
+    color: var(--color-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.picnic-food-textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+    padding: 12px;
+    border-radius: 8px;
+    resize: vertical;
+    width: 100%;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.picnic-food-textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}

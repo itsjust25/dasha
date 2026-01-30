@@ -25,11 +25,34 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
         });
 
         if (ticketRef.current) {
+            // Scroll to top to avoid offset issues
+            window.scrollTo(0, 0);
+
+            // Force a standard desktop-like width for the capture
+            const originalStyle = ticketRef.current.style.width;
+            const originalMaxWidth = ticketRef.current.style.maxWidth;
+            ticketRef.current.style.width = '800px';
+            ticketRef.current.style.maxWidth = 'none';
+
             const canvas = await html2canvas(ticketRef.current, {
                 scale: 2,
                 useCORS: true,
-                backgroundColor: '#0a192f', // Match background
+                backgroundColor: '#ffffff',
+                logging: false,
+                width: 800,
+                onclone: (document) => {
+                    const el = document.querySelector('.boarding-pass') as HTMLElement;
+                    if (el) {
+                        el.style.width = '800px';
+                        el.style.maxWidth = 'none';
+                    }
+                }
             });
+
+            // Restore original style
+            ticketRef.current.style.width = originalStyle;
+            ticketRef.current.style.maxWidth = originalMaxWidth;
+
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
                 orientation: 'landscape',
@@ -38,7 +61,7 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
             });
 
             pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2);
-            pdf.save('boarding-pass.pdf');
+            pdf.save(`${selection.category.toLowerCase().replace(/\s+/g, '-')}-boarding-pass.pdf`);
         }
 
         onSend();
@@ -86,7 +109,7 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
 
                         <div className="destination-row">
                             <div className="route">
-                                <div className="city">TIN ❤️ DASHA</div>
+                                <div className="city">TIN ❤️ SHEKEINAH</div>
                                 <div className="plane-path">✈</div>
                                 <div className="city">{selection.location.toUpperCase()}</div>
                             </div>
@@ -123,6 +146,12 @@ export default function TicketView({ selection, onSend }: TicketViewProps) {
                                 <div className="detail-item">
                                     <label>MEAL</label>
                                     <div>Carry-On (Own Food)</div>
+                                </div>
+                            )}
+                            {selection.picnicFoodList && (
+                                <div className="detail-item full-width">
+                                    <label>FOOD/ITEMS TO BRING</label>
+                                    <div className="food-list-value">{selection.picnicFoodList}</div>
                                 </div>
                             )}
                         </div>

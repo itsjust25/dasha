@@ -10,6 +10,7 @@ interface DateSelectorProps {
         foodOption?: string;
         activities: string[];
         bringOwnFood?: boolean;
+        picnicFoodList?: string;
         customImage?: string;
         date?: string;
     }) => void;
@@ -30,6 +31,7 @@ export default function DateSelector({ onComplete }: DateSelectorProps) {
             foodOption?: string;
             activities: string[];
             bringOwnFood?: boolean;
+            picnicFoodList?: string;
             customImage?: string;
             date?: string;
         }

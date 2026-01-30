@@ -13,6 +13,7 @@ interface DateCardProps {
         foodOption?: string;
         activities: string[];
         bringOwnFood?: boolean;
+        picnicFoodList?: string;
         customImage?: string;
         date?: string;
     }) => void;
@@ -23,6 +24,7 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
     const [foodOption, setFoodOption] = useState('');
     const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
     const [bringOwnFood, setBringOwnFood] = useState(false);
+    const [picnicFoodList, setPicnicFoodList] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
     const [customWhere, setCustomWhere] = useState('');
     const [customWhen, setCustomWhen] = useState('');
@@ -33,7 +35,8 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
             location: option.customInput ? customWhere : location,
             foodOption: foodOption || undefined,
             activities: selectedActivities.length > 0 ? selectedActivities : option.activities || [],
-            bringOwnFood: option.hasOwnFood ? bringOwnFood : undefined,
+            bringOwnFood: option.hasOwnFood && option.id !== 'picnic' ? bringOwnFood : undefined,
+            picnicFoodList: option.id === 'picnic' ? picnicFoodList : undefined,
             customImage: option.customInput ? customImage : undefined,
             date: selectedDate || undefined,
         };
@@ -52,7 +55,8 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
                     location: customWhere || option.locations[0],
                     foodOption: foodOption || undefined,
                     activities: selectedActivities.length > 0 ? selectedActivities : option.activities || [],
-                    bringOwnFood: option.hasOwnFood ? bringOwnFood : undefined,
+                    bringOwnFood: option.hasOwnFood && option.id !== 'picnic' ? bringOwnFood : undefined,
+                    picnicFoodList: option.id === 'picnic' ? picnicFoodList : undefined,
                     customImage: result,
                     date: selectedDate || undefined,
                 };
@@ -163,24 +167,44 @@ export default function DateCard({ option, isExpanded, onToggle, onSelectionChan
                                 ) : (
                                     <div className="form-group">
                                         <label>DESTINATION SECTOR (Location)</label>
-                                        <select
-                                            value={location}
-                                            onChange={(e) => {
-                                                setLocation(e.target.value);
-                                                setTimeout(handleChange, 0);
-                                            }}
-                                        >
-                                            <option value="">Select Destination Sector...</option>
-                                            {option.locations.map((loc) => (
-                                                <option key={loc} value={loc}>
-                                                    {loc}
-                                                </option>
-                                            ))}
-                                        </select>
+                                        {option.locations.length === 1 ? (
+                                            <div className="static-location-value">{option.locations[0]}</div>
+                                        ) : (
+                                            <select
+                                                value={location}
+                                                onChange={(e) => {
+                                                    setLocation(e.target.value);
+                                                    setTimeout(handleChange, 0);
+                                                }}
+                                            >
+                                                <option value="">Select Destination Sector...</option>
+                                                {option.locations.map((loc) => (
+                                                    <option key={loc} value={loc}>
+                                                        {loc}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        )}
                                     </div>
                                 )}
 
-                                {option.hasOwnFood && (
+                                {option.hasOwnFood && option.id === 'picnic' && (
+                                    <div className="form-group">
+                                        <label>FOOD/ITEMS TO BRING</label>
+                                        <textarea
+                                            placeholder="What do you want to eat or bring? List them here..."
+                                            value={picnicFoodList}
+                                            onChange={(e) => {
+                                                setPicnicFoodList(e.target.value);
+                                                setTimeout(handleChange, 0);
+                                            }}
+                                            className="picnic-food-textarea"
+                                            rows={4}
+                                        />
+                                    </div>
+                                )}
+
+                                {option.hasOwnFood && option.id !== 'picnic' && (
                                     <div className="form-group checkbox-group">
                                         <label>
                                             <input

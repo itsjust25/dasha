@@ -15,6 +15,7 @@ export interface DateSelection {
     foodOption?: string;
     activities: string[];
     bringOwnFood?: boolean;
+    picnicFoodList?: string;
     comments: string;
     customImage?: string;
     passportImage?: string;
